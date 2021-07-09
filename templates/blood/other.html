@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/brands.min.css" integrity="sha512-dBL5cY4qTt42J1cfabCHTYR7KMztyd+n4t2GhD6EH/MKWJIIHuEYckJ1nHEpTwIaiDkrjzbc6WyiSkdLP+3INQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<title>Document</title>
+</head>
+
+<body>
+
+    <!--Navbar-->
+    
+    <div class="header_other">
+        
+        <nav class="navbar navbar-expand-lg fixed-top other">
+
+            <div class="container text-uppercase p-2">
+                <a class="navbar-brand font-weight-bold text-white" href="{% url 'home' %}">Blood</a>
+                <button class="navbar-toggler color-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+
+                  </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create' %}">Request Blood</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'doner' %}">Join As Doner</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'hospital' %}">Hospital</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ambulance' %}">Ambulance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex ">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+     
+
+        </div>
+
+
+
+        {% block content %}
+
+        {% endblock %}
+
+<!-- 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"
+    integrity="sha512-+/4Q+xH9jXbMNJzNt2eMrYv/Zs2rzr4Bu2thfvzlshZBvH1g+VGP55W8b6xfku0c0KknE7qlbBPhDPrHFbgK4g=="
+    crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="jquery.counterup.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () { // check if scroll event happened
+            if ($(document).scrollTop() > 80) {
+
+                $(".fixed-top").css("background-color", "#0000A0"); // if yes, then change the color of class "navbar-fixed-top" to white (#f8f8f8)
+            } else {
+                $(".fixed-top").css("background-color", "transparent"); // if not, change it back to transparent
+            }
+        });
+    });
+
+    $('.count').counterUp({
+        delay: 1,
+        time: 1000
+    });
+
+    
+</script> -->
+
+</body>
+</html>

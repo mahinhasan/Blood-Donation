@@ -1,0 +1,48 @@
+{% extends 'blood/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% crispy form %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/doner.css' %}">
+
+<div class="doner" >
+    <div class="container">
+        <div class="row" >
+            <div  class="col-md-8  offset-md-1 mx-auto" >
+    
+    
+                <div class="card my-5 " style="height: 100vh;width:90%;margin:auto"  >
+                    <h3 class=" mb-5 mx-auto" >Join As Blood Doner</h3>
+                    <hr>
+                    <form method="post" id="id_form"">
+                        {% csrf_token %}
+    
+                        <div class="row">
+    
+                            {% for field in form %}
+                            <div  class="col-sm-6 px-3 " style="text-transform: uppercase;color:white">
+                                {{ field|as_crispy_field }}
+                            </div>
+                            {% endfor %}
+                        </div>
+    
+                        <button type="submit" class=" d-block btn btn-lg btn-block my-2 "
+                            style="background: rgb(189, 46, 46);width:70%;margin:0 auto;margin-bottom:50px;color:white">
+                            Request
+                        </button>
+                    </form>
+    
+                </div>
+            </div>
+    
+        </div>
+    
+    </div>
+</div>
+
+
+<!-- {% include 'blood/footer.html' %} -->
+
+{% endblock content %}

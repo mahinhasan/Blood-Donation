@@ -1,0 +1,76 @@
+{% extends 'br/br_base.html' %}
+{% block title %}Login page{% endblock title %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% crispy form %}
+
+
+{% block content %}
+
+<!-- <div class="container">
+        <div class="row mt-5 pt-5">
+            <div class="col-md-5 offset-4">
+                <div class="card my-3 p-2 shadow">
+                    <div class="card-body">
+                        <h4 style="text-align: center;">Login Here</h4>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            
+
+                            <div class="d-grid gap-2 d-md-block">
+                                <input type="submit" name="" id="" class="btn btn-primary btn-block" value="Login">
+                              </div>
+                        </form>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+    </div> -->
+<div class="full" style="background: url(../../static/images/login.jpg);background-repeat: no-repeat; background-size: cover;height:95vh">
+    <div class="container">
+        <div class="row mt-5 pt-5 h-100">
+            <div class="col-md-5 offset-md-4 h-100  " style="margin-top: 10vh;">
+                <div class="card my-4 p-2 shadow p-4 h-100 d-flex justify-content-center" >
+                    {{message}}
+                    <h4 style="text-align: center;padding-top:10px">Login Here</h4>
+                    {% if just_logged_out %}  You are successfully logged out {% endif %}
+    
+                    <hr>
+                    <form method="POST" >
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-4">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+    
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                    <a href="#" class="mt-4 mx-auto"> <h6>Forget password ? </h6></a>
+                    <div class="t my-4 mx-auto" style="display: flex;">
+                       
+                        <h6>Don't you have any account ?</h6> <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+                    </div> 
+                    
+                </div>
+            </div>
+        </div>
+        <div class="mb-4" style="height: 10vh;"></div>
+    </div>
+</div>
+
+
+<!-- {% include 'blood/footer.html' %} -->
+
+{% endblock content %}
+
+
+
+
+    

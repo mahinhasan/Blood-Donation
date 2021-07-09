@@ -1,0 +1,59 @@
+{% extends 'br/br_base.html' %}
+{% block title %}request for blood{% endblock title %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% crispy form %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="row mt-4 post">
+        <div class="col-md-8 mt-5 offset-md-2" >
+            <div class="card text-left ">
+                <div class="card-header " style="text-align: center;font-weight:bold">
+                    Search Hospital From Here
+                </div>
+                <div class="card-body shadow">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                            
+                        {{form.form|crispy}}
+
+                        <input class="btn btn-info btn-block" type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 post mb-4">
+        {% for h in hptls %}
+        <div class="col-md-4 mt-5">
+           
+            <div class="card text-left shadow" style="text-align: center;">
+               
+             
+              <div class="card-body" style="text-align: center;text-align: justify;">
+                <img src="https://img.icons8.com/bubbles/100/000000/administrator-male.png" class="img-lg rounded-circle mb-4" alt="profile image"> <h4 class="card-title">{{h.name}}</h4>
+                <hr>
+                <div class="contact" >
+                    <h6 class="card-text"><strong> <i class="fa fa-phone" aria-hidden="true"></i> {{h.hospital_number}}</strong></h6>
+                    <h6><strong> <i class="fa fa-location-arrow" aria-hidden="true"></i>  {{h.district}}</strong></h6>
+                    <h6><strong> <i class="fa fa-ambulance" aria-hidden="true"></i> {{h.ambulance_number}} </strong></h6>
+                </div>
+                <hr>
+                <input type="text" class="btn btn-danger btn-block" name="" id="" value="{{h.group}}">
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/new/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <title>Simple Blood Donation</title>
+</head>
+
+<body>
+ 
+
+  <header class="header" style="border-bottom: 2px solid red;">
+    <section class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="contact">
+                        <p><span class="phone"><a href="#">Phone: +880-1315091449</a></span><span class="email"><a href="#">Email: easyblood@gmail.com</a></span></p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="join-us">
+                        
+                        {% if user.is_authenticated %} 
+                        <p><a href="{% url 'profile' %}">profile</a></p>
+                        
+                        {% else %}
+  
+                        <p><a href="{% url 'login' %}">Login</a></p>
+                        <p><a href="{% url 'register' %}">Register</a></p>
+                        
+                        {% endif %}
+                            
+                         
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="header-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-12 col-xs-12">
+                    <a href="#">
+                        <div class="main-logo">
+                            <img src="{% static 'images/blood_56x56.png' %}" alt="">
+                            <h2>Blood <span><i class="fas fa-heart" aria-hidden="true"></i></span> Donation</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-7 col-sm-12 col-xs-12">
+                    <div class="menu">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{% url 'home' %}">HOME</a></li>
+                            <li><a href="{% url 'doner' %}">JOIN AS DONER</a></li>
+                            <li><a href="{% url 'b_request' %}">BlOOD REQUEST</a></li>
+                            <li><a href="#">EVENT</a></li>
+                            <li><a href="#">BLOG</a></li>
+                            <li><a href="#">CONTACT</a></li>
+                            <li id="bar"><i class="fas fa-bars" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+
+
+
+  
+  {% block content %}
+    
+  {% endblock content %}
+    
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/animationCounter.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/active.js' %}"></script>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+  </body>
+
+</html>

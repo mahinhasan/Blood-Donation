@@ -1,0 +1,209 @@
+{% extends 'br/br_base.html' %}
+
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+
+
+
+<div class="blog-single gray-bg">
+    <div class="container ">
+        <div class="row align-items-center ">
+            <div class="col-lg-8 m-15px-tb " >
+                <article class="article">
+                    
+                    {% ifequal post.blood_group 'A+' %}
+                    <div class="col-md-4">
+                        <img src="{% static 'images/A+.jpeg' %}" alt="post image" style="width: 100%;height:100%">
+                    </div>
+                    {% endifequal %}
+
+
+                    {% ifequal post.blood_group 'A-' %}
+                    <div class="col-md-4">
+                        <img src="{% static 'images/A-.png' %}" alt="post image" style="width: 100%;height:100%">
+                    </div>
+                    {% endifequal %}
+
+                    {% ifequal post.blood_group 'AB+' %}
+                    <div class="col-md-4">
+                        <img src="{% static 'images/AB+.jpg' %}" alt="post image" style="width: 100%;height:100%">
+                    </div>
+                    {% endifequal %}
+
+                    {% ifequal post.blood_group 'AB-' %}
+                    <div class="col-md-4">
+                        <img src="{% static 'images/AB-.png' %}" alt="post image" style="width: 100%;height:100%">
+                    </div>
+                    {% endifequal %}
+
+                    {% ifequal post.blood_group 'O+' %}
+                    <div class="col-md-4">
+                        <img src="{% static 'images/O+.jpeg' %}" alt="post image" style="width: 100%;height:100%">
+                    </div>
+                    {% endifequal %}
+
+                    {% ifequal post.blood_group 'O-' %}
+                    <div class="col-md-4">
+                        <img src="{% static 'images/O-.png' %}" alt="post image" style="width: 100%;height:100%">
+                    </div>
+                    {% endifequal %}
+
+                    {% ifequal post.blood_group 'B+' %}
+                    <div class="col-md-4">
+                        <img src="{% static 'images/B+.png' %}" alt="post image" style="width: 100%;height:100%">
+                    </div>
+                    {% endifequal %}
+
+                    {% ifequal post.blood_group 'B-' %}
+                    <div class="col-md-4">
+                        <img src="{% static 'images/B-.png' %}" alt="post image" style="width: 100%;height:100%;">
+                    </div>
+                    {% endifequal %}
+                    <div class="article-title">
+                        
+                        <h2 style="text-transform: uppercase;">{{post.incident}}</h2>
+                        <small>{{post.time}}</small>
+                        
+                        <hr>
+                        <div class="media">
+                            <div class="avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" title="" alt="">
+                            </div>
+                            <div class="media-body">
+                                <label>{{post.author}}</label><br>
+                                <small>{{request.user.date_joined}}</small>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                                
+                     <h6>{{post.content}}</h6>
+                    </div>
+                    <hr>
+                    <div class="article-content " style="display: flex;justify-content:space-around;">
+
+                        <input type="submit" class="btn btn-secondary  btn-block mx-2 text-uppercase" value="Group: {{post.blood_group}}">
+                        <input type="submit" class="btn btn-secondary btn-block mx-2 text-uppercase" value="District: {{post.district}}">
+
+                        <input type="submit" class="btn btn-secondary  btn-block mx-2 text-uppercase" value="Contact: {{post.contact}}">
+
+                       </div>
+
+                       <!-- <div class="article-content">
+                        
+                        <h6><small>In district:  </small>{{post.district}}</h6>
+                       </div>
+                    <div class="article-content" style="text-transform: uppercase;font-weight:bold;color:blue">
+                         <small>Interested People please contact in this Number: </small>       
+                        <span >{{post.contact}}</span>
+
+                       </div> -->
+
+                    
+                    <!-- <div class="nav tag-cloud">
+                        <a href="#">Design</a>
+                        <a href="#">Development</a>
+                        <a href="#">Travel</a>
+                        <a href="#">Web Design</a>
+                        <a href="#">Marketing</a>
+                        <a href="#">Research</a>
+                        <a href="#">Managment</a>
+                    </div> -->
+                </article>
+                <div class="contact-form article-comment">
+                    <h4>Leave a Response</h4>
+                    <form id="contact-form" method="POST">
+                        <div class="row">
+                           {% csrf_token %}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input name="email" id="email" placeholder="Email *" class="form-control" type="email">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea name="message" id="message" placeholder="Your message *" rows="4" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="send">
+                                    <button type="submit" class="px-btn theme"><span>Submit</span> <i class="arrow"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 m-15px-tb blog-aside">
+                <!-- Author -->
+                <div class="widget widget-author">
+                    <div class="widget-title">
+                        <h3>User </h3>
+                    </div>
+                    <div class="widget-body">
+                        <div class="media align-items-center">
+                            <div class="avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" title="" alt="">
+                            </div>
+                            <div class="media-body">
+                                <h6>Hello, I'm<br>{{user.username}}</h6>
+                                
+                            </div>
+                        </div>
+                        <div >
+                        <p>I'm a student </p>
+                        <h5><small>01315091449</small></h5>
+                        <small>{{user.email}}</small>
+                    </div>
+                    </div>
+                </div>
+                <!-- End Author -->
+               
+                <!-- Latest Post -->
+                <div class="widget widget-latest-post">
+                    <div class="widget-title">
+                        <h3>Latest Request</h3>
+                    </div>
+                    <div class="widget-body">
+                        <div class="">
+                            
+                            {% for lst in latest %}
+                            <div class="lpa-left media-body py-4">
+                                <div class="lpa-title">
+                                    <h5><a href="{% url 'post_request' lst.id %}">{{lst.title}}</a></h5>
+                                </div>
+                                <div class="lpa-meta">
+                                    <a class="name" href="#">
+                                       {{user.username}}
+                                    </a>
+                                    <a class="date" href="#">
+                                        {{lst.group}}
+                                    </a>
+
+                                    <a class="date" href="#">
+                                        {{lst.time}}
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            {% endfor %}
+                                
+                           
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- End Latest Post -->
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'blood/footer.html' %}
+
+{% endblock %}

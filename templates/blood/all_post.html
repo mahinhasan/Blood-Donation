@@ -1,0 +1,31 @@
+{% extends 'blood/other.html' %}
+{% block navbar %}
+
+{% endblock navbar %}
+
+{% block content %}
+
+<section class="header-extradiv">
+    <div class="container heading text-center text-upper pb-4">
+        <h2 class="text-center text-weight-bold text-uppercase">All Blood Request</h2>
+        
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for pst in posts %}
+            <div class=" extra-div col-lg-4 col-md-4 col-12">
+                <a href="#"><i class="fa-3x fas fa-sad-cry"></i> </a>
+                <a href="{% url 'post_request' pst.id %}">
+                    <h3>{{pst.title}}</h3>
+                    <span>{{pst.time}}</span>
+                    <hr>
+                    <h5 class="my-3">{{pst.body | truncatechars:100}}</h5>
+                    <h6>please contact in : +880-{{pst.phone}}</h6>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+</section>
+{% endblock content %}

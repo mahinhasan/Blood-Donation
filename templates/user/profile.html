@@ -1,0 +1,109 @@
+{% extends 'br/br_base.html' %}
+{% block title %}request for blood{% endblock title %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% crispy form %}
+
+{% block content %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+    .body{
+        background: linear-gradient(rgba(0,0,0,0.5),#0096877e),url(../../static/images/profile_back.jpg);background-size:cover;
+        color: white;
+
+    }
+
+    .card{
+        background: linear-gradient(rgba(0,0,0,0.5),#0096877e),url(../../static/images/profile_back.jpg);background-size:cover;
+        color: white;
+
+    }
+
+    #exampleModal{
+        background: linear-gradient(rgba(0,0,0,0.5),#0096877e),url(../../static/images/profile_back.jpg);background-size:cover;
+        
+    }
+</style>
+
+<div class="body">
+    <div class="container" >
+        <div class="row  pt-5" style="height: 90vh;">
+            <div class="col-md-10 offset-md-1 mt-4">
+                <div class="card shadow mb-4 " style="border-radius: 10px;">
+                    <div class="card-body mb-3 ">
+                        <span><button type="button" class="btn btn-info btn-sm float-right" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Edit profile
+                            </button></span>
+    
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="" style="width: 100%;height:100%" src="{{user.userprofile.image.url}}" alt="post image">
+                            </div>
+                            <div class="col-md-6" style="font-family: 'Merriweather', serif;text-transform:uppercase"> 
+                                {% if user.first_name %}
+                                <h2>{{user.first_name}} {{user.last_name}}</h2>
+                                {% else %}
+                                <h2>{{user.username}}</h2>
+                                {% endif %}
+    
+                                <small><span>profile created: </span>20.07.2021</small>
+                                <hr>
+    
+    
+                                <h4>User Name: {{user.username}}</h4>
+                                <h4>First Name: {{user.first_name}}</h4>
+                                <h4>Last Name: {{user.last_name}}</h4>
+                                <h4>Email : {{user.email}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog mw-100 w-50  modal-dialog-centered" role="document">
+        <div class="modal-content" >
+            <div class="modal-header" style="background: rgb(111, 111, 190);color:white;text-transform:uppercase;text-align:center;font-weight:bold">
+                <h5 class="modal-title text-center"  id="exampleModalLabel">User Update Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background: linear-gradient(rgba(0,0,0,0.5),#0096877e),url(../../static/images/profile_back.jpg);background-size:cover;
+            color: white;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-thumbnail" src="{{user.userprofile.image.url}}" alt="post image">
+                    </div>
+                    <div class="col-md-6">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            {{user_form|crispy}}
+                            {{profile_form|crispy}}
+
+                            <button type="submit" class="btn btn-info btn-center btn-sm"> Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% include 'blood/footer.html' %}
+
+{% endblock content %}

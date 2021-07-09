@@ -1,0 +1,476 @@
+{% extends 'blood/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Front page</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/new/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/new/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- <header class="header">
+            <section class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <div class="contact">
+                                <p><span class="phone"><a href="#">Phone: +880-1315091449</a></span><span class="email"><a href="#">Email: easyblood@gmail.com</a></span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="join-us">
+                                <p><a href="#">Login</a></p>
+                                <p><a href="#">Register</a></p>
+                                <p><a href="#">Logout</a></p>
+                                                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="header-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12 col-xs-12">
+                            <a href="#">
+                                <div class="main-logo">
+                                    <img src="{% static 'images/blood_56x56.png' %}" alt="">
+                                    <h2>Blood Donation</h2>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="menu">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="{% url 'create' %}">HOME</a></li>
+                                    <li><a href="#">ABOUT US</a></li>
+                                    <li><a href="#">EVENT</a></li>
+                                    <li><a href="#">BLOG</a></li>
+                                    <li><a href="#">CONTACT</a></li>
+                                    <li id="bar"><i class="fas fa-bars" aria-hidden="true"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header> -->
+        <section class="carosal-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="client owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="text">
+                                    <h3></h3>
+                                    <p></p>
+
+                                    <!-- <h5 class="white-button"><a href="#">DONATE NOW</a></h5>
+                                    <h5 class="white-button"><a href="#">CONTACT US</a></h5> -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="letast_news">
+            <h2>latest Blood Request</h2>
+            <div class="container">
+                <div class="row">
+
+                    {% for req in recent_requests %}
+                    <div class="col-md-4">
+                        <div class="single_news">
+                            <!-- <img src="{% static 'images/boy.jpg' %}" alt="" style="border-radius: 50%;width:100px;height:100px"> -->
+                            <h1 style="text-align: center;padding-top:10px">{{req.incident}}</h1>
+                            <h3 style="color: red;" class="group"> <span>Group: </span>{{req.blood_group}}</h3>
+                            <div class="texts">
+
+                                <small>
+                                    <p class="date"><a href="#">{{req.time}}</a></p>
+                                </small>
+                                <p class="test">{{req.content|truncatewords:10 }} </p>
+                                <h3 style="background: red;text-align:center"><a href="#">READ MORE</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <h3 style="text-align: center;padding-bottom:10px;text-transform:uppercase;"><a
+                            style="color:rgb(243, 235, 235);padding:7px; font-weight:bold;text-decoration:none;background:red;text-transform:uppercase"
+                            href="{% url 'b_request' %}">All Request</a></h3>
+
+
+                </div>
+            </div>
+        </section>
+
+        <section class="our_activity">
+            <h2>OUR ACTIVITY</h2>
+            <p>Collect blood from people all around the world and serve to many critical situtaion patient <br> And
+                hospital information with ambulance driver number. </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="single-Promo">
+                            <div class="promo-icon">
+                                <i class="material-icons">new_label</i>
+                            </div>
+                            <h2><a href="{% url 'b_request' %}">Request For Blood</a></h2>
+                            <p>When you need any <strong>AMBULANCE</strong> from anywhere in Bangladesh here you can
+                                find. We always here for you. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="single-Promo">
+                            <div class="promo-icon">
+                                <i class="material-icons">local_shipping</i>
+                            </div>
+                            <h2><a href="{% url 'ambulance' %}">Ambulance</a></h2>
+                            <p>When you need any <strong>AMBULANCE</strong> from anywhere in Bangladesh here you can
+                                find. We always here for you. </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-12">
+                        <div class="single-Promo">
+                            <div class="promo-icon">
+                                <i class="material-icons">bloodtype</i>
+                            </div>
+                            <h2><a href="{% url 'doner' %}">Donate Blood</a></h2>
+                            <p>Collect Blood and serve blood is our main theme. So join as a Doner or request for blood
+                                from our website </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="single-Promo">
+                            <div class="promo-icon">
+                                <i class="material-icons">foundation</i>
+                            </div>
+                            <h2><a href="{% url 'hospital' %}">Hospital</a></h2>
+                            <p>We collect every hospital name and number from every corner in Bangladesh.You can find
+                                any information from anywhere about any hospital</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="single-Promo">
+                            <div class="promo-icon">
+                                <a href="#"><i class="material-icons">local_pharmacy</i>
+                                </a>
+                            </div>
+                            <h2><a href="#">Medicine</a></h2>
+                            <p>If you need any Emergency medicine which you can't find near you . Just call us , our
+                                volunteers will help you as soon as possible..</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="single-Promo">
+                            <div class="promo-icon">
+                                <i class="material-icons">apps</i>
+                            </div>
+                            <h2><a href="#">Other</a></h2>
+                            <p>Beside <strong> Hospital,Ambulane,Blood and Medicine</strong> we also provide many
+                                emergency service what you need.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section>
+            <div class="search">
+                <div class="title">
+                    <h2>Find Blood Doner From Here</h2>
+                    <hr>
+                </div>
+                <form action="{% url 'doner_list' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="find" placeholder="Search by group">    
+                    <input type="text" name="location" placeholder="Where you need ?">
+                    
+                    <a href="{% url 'doner' %}"><button type="submit">Find Doner</button></a>
+                </form>
+
+                <!-- <a href="{% url 'doner_list' %}"><button type="submit">Find Doner</button></a> -->
+            </div>
+        </section>
+
+
+        <!-- <section class="donate_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 for-padding">
+                        <h4>URGENT CASE</h4>
+                        <h3>Recent Environmental Situation</h3>
+                        <p></p>
+                        <div class="progress-text">
+                         
+
+                        </div>
+                        <h2><a href="#">Request For Blood</a></h2>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- <section class="events_section_area">
+            <h2>UPCOMING EVENTS</h2>
+            <p>Collect Donar from all around the world.</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="events_single">
+                            <img src="{% static 'images/doner.jpg' %}" alt="">
+                            <p><span class="event_left"><i class="material-icons">access_time</i>1:00 pm - 3:00 pm</span><span class="event_right"><i class="material-icons">location_on</i>California Street</span></p>
+                            <div class="clear"></div>
+                            <h3>Daily meal for poor people</h3>
+                            <h6>In this covid situation there are thousands of people loss their job.All most everyone is labour . They can't go out for work. <br>So we are surving their food as much as we can. If you want to join us please contact us</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="events_single">
+                            <img src="{% static 'images/delivery_baby.jpg' %}" alt="">
+                            <p><span class="event_left"><i class="material-icons">access_time</i>1:00 pm - 3:00 pm</span><span class="event_right"><i class="material-icons">location_on</i>California Street</span></p>
+                            <h3>Collect Blood From jamalpur</h3>
+                            <h6>In jamalpur sadar we are campinig for collecting blood. we are testing blood group for free.please come to our donation camp test your blood group . Join us a doner</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="events_single">
+                            <img src="{% static 'images/orphange.jpg' %}" alt="">
+                            <p><span class="event_left"><i class="material-icons">access_time</i>10:00 am - 4:00 pm</span><span class="event_right"><i class="material-icons">location_on</i>In our website </span></p>
+                            <h3>Education For Children</h3>
+                            <h6>We are helping poor people for sure their edication.We are collecting fund for poor people Education</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+        <!-- <div class="block-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6 for-border">
+                        <div class="block">
+                            <p><i class="material-icons">favorite</i></p>
+                            <p class="counter-wrapper"><span class="fb"></span></p>
+                            <p class="text-block">CAUSES</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 for-border">
+                        <div class="block">
+                            <p><i class="material-icons">language</i></p>
+                            <p class="counter-wrapper"><span class="code"></span></p>
+                            <p class="text-block">PLACES</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 for-border">
+                        <div class="block">
+                            <p><i class="material-icons">person_add</i></p>
+                            <p class="counter-wrapper"><span class="bike"></span></p>
+                            <p class="text-block">VOLUNTEERS</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 for-border">
+                        <div class="block">
+                            <p><i class="material-icons">people</i></p>
+                            <p class="counter-wrapper"><span class="coffee"></span></p>
+                            <p class="text-block">SAVED</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- <div class="clear"></div> -->
+        <!-- <section class="volunteer_area">
+            <h2>Our Volunteer</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua. </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="volunteer_single owl-carousel owl-theme">
+                            <div class="item">
+                                <img src="{% static 'images/volunteer.jpg' %}" alt="">
+                                <div class="text">
+                                    <h3>Laura Jammy</h3>
+                                    <h6>Designer</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisi</p>
+                                    <h5><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></h5>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="{% static 'images/volunteer.jpg' %}" alt="">
+                                <div class="text">
+                                    <h3>Albert R. Ardoin</h3>
+                                    <h6>Actor</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisi</p>
+                                    <h5><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></h5>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="{% static 'images/volunteer.jpg' %}" alt="">
+                                <div class="text">
+                                    <h3>Cynthia Anni</h3>
+                                    <h6>Singer</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisi</p>
+                                    <h5><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></h5>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="{% static 'images/volunteer.jpg' %}" alt="">
+                                <div class="text">
+                                    <h3>Laura Jammy</h3>
+                                    <h6>Designer</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisi</p>
+                                    <h5><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></h5>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="{% static 'images/volunteer.jpg' %}" alt="">
+                                <div class="text">
+                                    <h3>Albert R. Ardoin</h3>
+                                    <h6>Actor</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisi</p>
+                                    <h5><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></h5>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="{% static 'images/volunteer.jpg' %}" alt="">
+                                <div class="text">
+                                    <h3>Cynthia Anni</h3>
+                                    <h6>Singer</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisi</p>
+                                    <h5><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+        <section class="search">
+
+        </section>
+
+
+
+
+
+
+
+
+        <!-- <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="footer-charity-text">
+                            <h2>Blood Donation</h2>
+                            <p>Blood is so import thing . We can help each other with blood. Every 4 month our blood change naturally.</p>
+                            <hr>
+                            <p><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-5">
+                                <div class="footer-text one">
+                                    <h3>RECENT POST</h3>
+                                    <ul>
+                                        <li><a href="#"><i class="material-icons">keyboard_arrow_right</i> Recent Blood Request</a></li>
+                                        <li><a href="#"><i class="material-icons">keyboard_arrow_right</i> Recent Blood Doner </a></li>
+                                        <li><a href="#"><i class="material-icons">keyboard_arrow_right</i> Doner for child</a></li>
+                                        <li><a href="#"><i class="material-icons">keyboard_arrow_right</i> Blood Donation Capm</a></li>
+                                        <li><a href="#"><i class="material-icons">keyboard_arrow_right</i> Article</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-3">
+                                <div class="footer-text two">
+                                    <h3>USEFUL LINKS</h3>
+                                    <ul>
+                                        <li><a href="#">Home</a></li>
+                                        
+                                        <li><a href="#">Event</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="footer-text one">
+                                    <h3>CONTACT US</h3>
+                                    <ul>
+                                        <li><a href="#"><i class="material-icons">location_on</i>Kuril,Dhaka,Bangladesh</a></li>
+                                        <li><a href="#"><i class="material-icons">email</i>icortex@info.com</a></li>
+                                        <li><a href="#"><i class="material-icons">call</i>+880-1315091449</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <p>Copyright @ 2021 <a href="#">icortex</a> | All Rights Reserved </p>
+            </div>
+        </footer> -->
+
+        <div style="height: 10vh;"></div>
+
+        {% include 'blood/footer.html' %}
+    </div>
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/animationCounter.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/active.js' %}"></script>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+
+</html>
+
+
+{% endblock content %}
