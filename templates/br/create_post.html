@@ -18,11 +18,14 @@
         
     </div>
     <!-- Button trigger modal -->
-
-    <button type="button" class="btn  mt-5 offset-md-2 px-2" data-toggle="modal" data-target="#exampleModal"
-        style="width: 56%;padding-top:40px;padding-bottom:40px;border:10px solid rgb(223, 219, 219);background: #f0f2f5;border-radius:20px;box-shadow: 5px 10px 10px 5px  #888888;">
-        <h4>Which group of Blood You need ? </h4>
-    </button>
+    <div class="row">
+        <div class="col-md-8  offset-md-2 shadow py-4" style="border-radius: 10px;">
+            <input type="button" class="btn btn-block py-3" value="Which group of Blood You need ?" data-toggle="modal" data-target="#exampleModal"
+            style="border:10px solid rgb(223, 219, 219);background: #fafafa;border-radius:20px;"
+        </>
+        </div>
+    </div>
+   
 
     <!-- Modal -->
     <div class="modal fade shadow " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -105,7 +108,7 @@
 
     <div class="row  pt-5">
 
-        <div class="col-md-7 offset-md-2">
+        <div class="col-md-8 offset-md-2">
 
             {% for post in posts %}
             <div class="card shadow mb-4 " style="border-radius: 10px;">

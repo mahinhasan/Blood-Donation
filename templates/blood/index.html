@@ -105,21 +105,22 @@
                     <div class="col-md-4">
                         <div class="single_news">
                             <!-- <img src="{% static 'images/boy.jpg' %}" alt="" style="border-radius: 50%;width:100px;height:100px"> -->
-                            <h1 style="text-align: center;padding-top:10px">{{req.incident}}</h1>
-                            <h3 style="color: red;" class="group"> <span>Group: </span>{{req.blood_group}}</h3>
+                            <h1 style="text-align: center;padding-top:10px;text-transform:capitalize">{{req.incident}}</h1>
+                            <hr>
+                            <h3 style="color: #2e2e2e;" class="group"> <span>Group: </span>{{req.blood_group}}</h3>
                             <div class="texts">
 
                                 <small>
-                                    <p class="date"><a href="#">{{req.time}}</a></p>
+                               <p class="date"><a href="#">{{req.time}}</a></p>
                                 </small>
-                                <p class="test">{{req.content|truncatewords:10 }} </p>
-                                <h3 style="background: red;text-align:center"><a href="#">READ MORE</a></h3>
+                                <p class="test">{{req.content|upper|truncatewords:20 }} </p>
+                                <h3 style="background:purple;text-align:center"><a href="#">READ MORE</a></h3>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
                     <h3 style="text-align: center;padding-bottom:10px;text-transform:uppercase;"><a
-                            style="color:rgb(243, 235, 235);padding:7px; font-weight:bold;text-decoration:none;background:red;text-transform:uppercase"
+                            style="color:rgb(243, 235, 235);padding:7px; font-weight:bold;text-decoration:none;background:rgb(116, 16, 119);text-transform:uppercase"
                             href="{% url 'b_request' %}">All Request</a></h3>
 
 
@@ -129,7 +130,7 @@
 
         <section class="our_activity">
             <h2>OUR ACTIVITY</h2>
-            <p>Collect blood from people all around the world and serve to many critical situtaion patient <br> And
+            <p style="font-size: 18px;">Collect blood from people all around the world and serve to many critical situtaion patient <br> And
                 hospital information with ambulance driver number. </p>
             <div class="container">
                 <div class="row">
