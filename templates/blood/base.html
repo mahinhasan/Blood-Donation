@@ -34,14 +34,11 @@
                     <div class="join-us">
                         
                         {% if user.is_authenticated %} 
-                        <p><a href="{% url 'profile' %}">profile</a></p>
                         <p><a href="{% url 'logout' %}">logout</a></p>
-                        
+                        <p><a href="{% url 'profile' %}">profile</a></p>
                         {% else %}
-  
                         <p><a href="{% url 'login' %}">Login</a></p>
                         <p><a href="{% url 'register' %}">Register</a></p>
-                        
                         {% endif %}                 
                     </div>
                 </div>
