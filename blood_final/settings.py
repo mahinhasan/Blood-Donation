@@ -25,7 +25,7 @@ SECRET_KEY = 'jj2k+6%ctpyfb+p56-e&2@_hqc&cddyq6bx4y_q8z*2giu*&(p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,12 +41,14 @@ INSTALLED_APPS = [
     'br',
     'crispy_forms',
     'user',
-    'django_filters'
+    'django_filters',
+    'twilio'
     
     
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,7 +129,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR,"media/")
 MEDIA_URL = "/media/"
 
@@ -141,5 +146,9 @@ EMAIL_HOST_PASSWORD = 'M@mahin97'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # LOGIN_REDIRECT_URL = '../b_request/'
 # LOGOUT_REDIRECT_URL='login/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

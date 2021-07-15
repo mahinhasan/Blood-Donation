@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from .models import BloodRequest
-from twilio.rest import Client
+# from twilio.rest import Client
 
 from blood.models import BloodDoner
 from .form import BloodRequestForm
@@ -39,7 +39,7 @@ def home(request):
                 if d == district:
                     accout_sid = "AC4b78ecc8f287ae52055e3e572cb6f710"
                     auth_token = "5a38a9b56e30e66ebf8c9a567debbc38"
-                    client = Client(accout_sid,auth_token)
+                    # client = Client(accout_sid,auth_token)
                     # client.messages.create(from_="+12029536456",body="Sir there need your blood!",to=[contacts])
                     
                     send_mail('Hello doner we need your '+group+ ' blood ', 'Emergancy', 'mahinhasanaiub@gmail.com', mails,

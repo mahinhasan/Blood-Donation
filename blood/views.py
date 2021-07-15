@@ -9,15 +9,15 @@ from br.models import BloodRequest
 from django.urls import reverse
 from django.db.models import Q
 from .models import*
-from twilio.rest import Client
+# from twilio.rest import Client
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import EmptyPage, Paginator,PageNotAnInteger,Page
 from .hospital import hospitals
 from .ambulance import ambulances
 from .doners import*
-import folium
-import geocoder
+# import folium
+# import geocoder
 
 
 #signpu django
@@ -93,7 +93,7 @@ def add_blood_doner(request):
         if fm.is_valid():
             accout_sid = "AC4b78ecc8f287ae52055e3e572cb6f710"
             auth_token = "5a38a9b56e30e66ebf8c9a567debbc38"
-            client = Client(accout_sid,auth_token)
+            # client = Client(accout_sid,auth_token)
             # client.messages.create(from_="+12029536456",body="Sir there need your blood!",to="+880-1315091449")
             send_mail('Welcome to blood.com '+str(name), 'Thanks for register as a Doner !', 'mahinhasanaiub@gmail.com', [email],
                 fail_silently=False)
@@ -125,7 +125,7 @@ def blood_request_post(request):
                 if dis==adr:
                     accout_sid = "AC4b78ecc8f287ae52055e3e572cb6f710"
                     auth_token = "5a38a9b56e30e66ebf8c9a567debbc38"
-                    client = Client(accout_sid,auth_token)
+                    # client = Client(accout_sid,auth_token)
                     client.messages.create(from_="+12029536456",body="Sir there need your blood!",to="+880-1749809704")
                     
                     send_mail('Hello dost we need your '+gr+ ' blood ', 'Emergancy', 'mahinhasanaiub@gmail.com', x,

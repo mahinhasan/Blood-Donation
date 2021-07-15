@@ -1,0 +1,1 @@
+web: gunicorn blood_final.wsgi --log-file -
