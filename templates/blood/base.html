@@ -35,6 +35,7 @@
                         
                         {% if user.is_authenticated %} 
                         <p><a href="{% url 'profile' %}">profile</a></p>
+                        <p><a href="{% url 'logout' %}">logout</a></p>
                         
                         {% else %}
   
